@@ -1,0 +1,31 @@
+name: Build and Push Docker Image (Manual)
+
+on:
+  workflow_dispatch:  # Trigger on manual workflow dispatch
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js 20.13.1  # Adjust the version as needed
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.13.1
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Docker image
+        run: docker build -t rohit051989/backstage-react-app-with-ts:latest .  # Replace placeholders
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Push Docker image
+        run: docker push rohit051989/backstage-react-app-with-ts:latest  # Replace placeholders
