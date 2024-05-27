@@ -1,4 +1,4 @@
-name: Build and Push Docker Image (Manual)
+name: Build and Push Docker Image for Nod (Manual)
 
 on:
   workflow_dispatch:  # Trigger on manual workflow dispatch
@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Use Node.js 20.13.1  # Adjust the version as needed
+      - name: Use Node.js 20  # Adjust the version as needed
         uses: actions/setup-node@v3
         with:
           node-version: 20.13.1
