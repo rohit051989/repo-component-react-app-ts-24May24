@@ -15,8 +15,8 @@ jobs:
         with:
           node-version: 20.13.1
 
-      - name: Install dependencies
-        run: npm install
+      #- name: Install dependencies
+      #  run: npm install
 
       - name: Build Docker image
         run: docker build -t rohit051989/backstage-react-app-with-ts:latest .  # Replace placeholders
