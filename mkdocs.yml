@@ -1,0 +1,8 @@
+site_name: "component-react-app-ts-24May24"
+site_description: "component-react-app-ts-24May24"
+
+nav:
+  - Introduction: index.md
+
+plugins:
+  - techdocs-core
