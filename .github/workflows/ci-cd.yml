@@ -1,0 +1,48 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:  # This allows manual triggers
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Package code as zip
+        run: |
+          zip -r react-app.zip .
+      - name: Setup SSH key
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.EC2_KEY }}
+
+      - name: Add EC2 to known hosts
+        run: |
+          ssh-keyscan -H ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts
+      - name: Copy zip to EC2
+        env:
+          EC2_USER: ${{ secrets.EC2_USER }}
+          EC2_HOST: ${{ secrets.EC2_HOST }}
+        run: |
+          scp react-app.zip $EC2_USER@$EC2_HOST:~/react-app.zip
+      - name: SSH to EC2 and deploy
+        env:
+          EC2_USER: ${{ secrets.EC2_USER }}
+          EC2_HOST: ${{ secrets.EC2_HOST }}
+        run: |
+          ssh $EC2_USER@$EC2_HOST << 'EOF'
+          sudo unzip -o ~/react-app.zip -d ~/react-app
+          sudo chown -R ec2-user:ec2-user /home/ec2-user/react-app
+          cd ~/react-app
+          npm install
+          npm start
+          EOF
