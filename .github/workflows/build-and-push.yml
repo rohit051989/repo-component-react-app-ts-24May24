@@ -21,7 +21,7 @@ jobs:
         
         with:
           repository: ${{ inputs.application-repo }}
-          #ref: ${{ inputs.branchOrTagName }}
+          ref: ${{ inputs.branchOrTagName }}
         
         #at: ${{ inputs.react_app_repo }}  # Use input for URL
 
