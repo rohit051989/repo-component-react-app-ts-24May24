@@ -6,6 +6,7 @@ on:
         application-repo:
           description: 'Name of the react application repo'  # What's this input for?
           required: true  # Is it optional or required?
+        
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
@@ -14,9 +15,10 @@ jobs:
       
       - name: Checkout React App Repository
         uses: actions/checkout@v3
+        
         with:
           repository: ${{ inputs.application-repo }}
-          branch: master
+          ref: master
         
         #at: ${{ inputs.react_app_repo }}  # Use input for URL
 
