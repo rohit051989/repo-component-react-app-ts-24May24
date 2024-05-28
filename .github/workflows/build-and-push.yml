@@ -24,6 +24,7 @@ jobs:
         with:
           repository: ${{ inputs.application-repo }}
           ref: ${{ inputs.branchOrTagName }}
+          token: ${{ secrets.GITHUB_TOKEN }}
         
         #at: ${{ inputs.react_app_repo }}  # Use input for URL
 
