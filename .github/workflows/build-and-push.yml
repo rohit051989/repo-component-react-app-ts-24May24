@@ -3,7 +3,7 @@ name: Build and Push Docker Image for Nod (Manual)
 on:
   workflow_dispatch:  # Trigger on manual workflow dispatch
     inputs:
-        application-repo:
+        applicationrepo:
           description: 'Name of the react application repo'  # What's this input for?
           required: true  # Is it optional or required?
         branchOrTagName:
@@ -22,7 +22,7 @@ jobs:
         uses: actions/checkout@v3
         
         with:
-          repository: ${{ inputs.application-repo }}
+          repository: ${{ inputs.applicationrepo }}
           ref: ${{ inputs.branchOrTagName }}
           token: ${{ secrets.backstage_token }}
         
