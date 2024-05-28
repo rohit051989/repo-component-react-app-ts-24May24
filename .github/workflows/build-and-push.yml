@@ -16,7 +16,7 @@ jobs:
 
     steps:
       - name: Show repository URL
-        run: echo ${{ inputs.application-repo }}:${{ inputs.branchOrTagName }}
+        run: echo ${{ inputs.applicationrepo }}:${{ inputs.branchOrTagName }}
         
       - name: Checkout React App Repository
         uses: actions/checkout@v3
