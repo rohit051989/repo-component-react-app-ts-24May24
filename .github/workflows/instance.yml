@@ -4,7 +4,7 @@ on:
   workflow_dispatch:  # Trigger on manual workflow dispatch
     inputs:
         applicationrepo:
-          description: 'Name of the react application repo'  # What's this input for?
+          description: 'Name of the React application repo'  # What's this input for?
           required: true  # Is it optional or required?
         branchOrTagName:
           description: 'Name of the branch to checkout'
