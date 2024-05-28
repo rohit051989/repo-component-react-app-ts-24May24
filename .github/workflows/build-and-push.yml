@@ -6,6 +6,9 @@ on:
         application-repo:
           description: 'Name of the react application repo'  # What's this input for?
           required: true  # Is it optional or required?
+        branchOrTagName:
+          description: 'Name of the branch to checkout'
+          required: true
         
 jobs:
   build-and-push:
@@ -18,7 +21,7 @@ jobs:
         
         with:
           repository: ${{ inputs.application-repo }}
-          ref: master
+          ref: ${{ inputs.branchOrTagName }}
         
         #at: ${{ inputs.react_app_repo }}  # Use input for URL
 
