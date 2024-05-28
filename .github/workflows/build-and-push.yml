@@ -22,7 +22,8 @@ jobs:
         uses: actions/checkout@v3
         
         with:
-          repository: ${{ inputs.application-repo }}
+          #repository: ${{ inputs.application-repo }}
+          repository: rohit051989/repo-backstage-react-component-24May2024-2
           ref: ${{ inputs.branchOrTagName }}
         
         #at: ${{ inputs.react_app_repo }}  # Use input for URL
