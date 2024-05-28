@@ -19,7 +19,7 @@ jobs:
         run: echo ${{ inputs.application-repo }}:${{ inputs.branchOrTagName }}
         
       - name: Checkout React App Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
         
         with:
           #repository: ${{ inputs.application-repo }}
