@@ -8,7 +8,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      #- uses: actions/checkout@v3
+      - name: Checkout React App Repository
+        uses: actions/checkout@v3
+        with:
+          repository: ${{ inputs.react_app_repo }}
+        
+        #at: ${{ inputs.react_app_repo }}  # Use input for URL
 
       - name: Use Node.js 20  # Adjust the version as needed
         uses: actions/setup-node@v3
