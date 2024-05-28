@@ -2,17 +2,20 @@ name: Build and Push Docker Image for Nod (Manual)
 
 on:
   workflow_dispatch:  # Trigger on manual workflow dispatch
-
+    inputs:
+        application-repo:
+          description: 'Name of the AWS Instance'  # What's this input for?
+          required: true  # Is it optional or required?
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
 
     steps:
-      #- uses: actions/checkout@v3
+      
       - name: Checkout React App Repository
         uses: actions/checkout@v3
         with:
-          repository: ${{ inputs.react_app_repo }}
+          repository: ${{ inputs.application-repo }}
         
         #at: ${{ inputs.react_app_repo }}  # Use input for URL
 
